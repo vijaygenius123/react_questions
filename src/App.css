@@ -45,7 +45,7 @@
 }
 
 .answer{
-  border: 1px solid black;
+/*  border: 1px solid black; */
   margin: 1%;
   border-radius: 5px;
   display: flex;
@@ -74,4 +74,11 @@ input[type=radio] {
   border: 0px;
   width: 50%;
   height: 4em;
+}
+
+.arrow-wrapper {
+  margin: 1%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 32px;
 }
