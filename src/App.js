@@ -3,6 +3,7 @@ import './App.css';
 import Question from './components/Question'
 import Arrows from './components/Arrows'
 import { questions } from './constants/questions'
+import Results from './components/Results';
 
 class App extends Component {
 
@@ -10,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       index: 0,
-      selected: []
+      selected: [],
+      complete: false
     }
   }
 
@@ -20,6 +22,10 @@ class App extends Component {
 
   handleArrowsChange = (e, index) => {
     this.setState({ index })
+  }
+
+  handleCompletion = (e) => {
+    this.setState({ complete: true })
   }
 
   handleSelection = (selectedChoice) => {
@@ -32,15 +38,26 @@ class App extends Component {
   }
 
   render() {
-    const { index, selected } = this.state;
+    const { index, selected, complete } = this.state;
     return (
       <div className="App" >
-        <Question {...questions[index]}
-          preSelected={selected[index]}
-          handleSelection={this.handleSelection}
-        />
-        <Arrows index={index} length={questions.length - 1}
-          handleArrowsChange={this.handleArrowsChange} />
+        {
+          complete ? (
+            <div>
+              <Question {...questions[index]}
+                preSelected={selected[index]}
+                handleSelection={this.handleSelection}
+              />
+              <Arrows index={index} length={questions.length - 1}
+                handleArrowsChange={this.handleArrowsChange}
+                handleCompletion={this.handleCompletion} />
+            </div>
+          )
+            :
+            (
+              <Results />
+            )
+        }
       </div>
     );
   }
