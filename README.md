@@ -5,10 +5,6 @@ Example Of Building A Simple Quiz With React
 
 ```mermaid
 classDiagram
-
-App -->Question
-App -->Arrow
-
 class App{
     -integer index
     -array selected
@@ -30,4 +26,6 @@ class Arrow{
     #handleArrowChange(index)
 }
 
+App -->Question
+App -->Arrow
 ```
