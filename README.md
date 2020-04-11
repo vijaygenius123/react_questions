@@ -21,13 +21,13 @@ class Question{
     *string image
     *array choices
     *int preSelected
-    -handleSelection(index) int
+    handleSelection(index) int
 }
 
 class Arrow{
     *int index
     *int length
-    -handleArrowChange(index) int
+    handleArrowChange(index) int
 }
 
 ```
