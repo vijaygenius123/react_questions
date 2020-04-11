@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function Arrows(props) {
-    const { index, length, handleArrowsChange } = props;
+    const { index, length, handleArrowsChange, handleCompletion } = props;
     return (
         <div className='arrow-wrapper'>
             {index === 0 ? <div> </div> :
@@ -10,7 +10,12 @@ function Arrows(props) {
                     <h1 onClick={(e) => handleArrowsChange(e, index - 1)}> &lt; </h1>
                 </div>
             }
-            <h2>{index + 1}/{length + 1}</h2>
+
+            {index === length ?
+                (<div onClick={handleCompletion}><h2>Complete</h2></div>)
+                :
+                (<div><h2>{index + 1}/{length + 1}</h2></div>)
+            }
             {index === length ? <div> </div> :
                 <div>
                     <h1 onClick={(e) => handleArrowsChange(e, index + 1)}> &gt; </h1>
@@ -23,7 +28,8 @@ function Arrows(props) {
 Arrows.propTypes = {
     index: PropTypes.number,
     length: PropTypes.number,
-    handleArrowsChange: PropTypes.func
+    handleArrowsChange: PropTypes.func,
+    handleCompletion: PropTypes.func
 }
 
 export default Arrows

@@ -4,23 +4,29 @@ import { questions } from '../constants/questions'
 
 
 function Results(props) {
-    const { selected } = props
+    const { selected, handleReset } = props
 
-    const score = selected.reduce((prev, current) => {
-        if (current == null)
+    const score = selected.reduce((prev, current, index) => {
+        if (current === null)
             return 0
-        else
-            return prev + current
+        else {
+            const currentScore = questions[index].choices.filter(q => q.id === current)
+            return prev + currentScore[0].score
+        }
     }, 0)
     return (
         <div>
-            <h2>Your Score Is {score}</h2>
+            <div>
+                <h2>Your Score Is {score}</h2>
+                <button onClick={handleReset}>Reset</button>
+            </div>
         </div>
     )
 }
 
 Results.propTypes = {
-    score: PropTypes.number
+    selected: PropTypes.array,
+    handleReset: PropTypes.func
 }
 
 export default Results

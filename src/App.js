@@ -28,13 +28,35 @@ class App extends Component {
     this.setState({ complete: true })
   }
 
+  handleReset = (e) => {
+    this.setState({
+      index: 0,
+      complete: false,
+      selected: questions.map(q => null)
+    })
+  }
+
+
   handleSelection = (selectedChoice) => {
+    const { index } = this.state
     const newSelections = this.state.selected.map((sel, i) => {
       if (i === this.state.index)
         return selectedChoice
       else return sel
     })
-    this.setState({ selected: newSelections })
+    if (index === questions.length - 1) {
+      this.setState({
+        selected: newSelections,
+        complete: true
+      })
+    }
+    else {
+      const newIndex = index + 1;
+      this.setState({
+        selected: newSelections,
+        index: newIndex
+      })
+    }
   }
 
   render() {
@@ -42,7 +64,7 @@ class App extends Component {
     return (
       <div className="App" >
         {
-          complete ? (
+          !complete ? (
             <div>
               <Question {...questions[index]}
                 preSelected={selected[index]}
@@ -55,7 +77,7 @@ class App extends Component {
           )
             :
             (
-              <Results />
+              <Results selected={selected} handleReset={this.handleReset} />
             )
         }
       </div>
