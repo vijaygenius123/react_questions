@@ -12,8 +12,8 @@ App -->Arrow
 class App{
     -integer index
     -array selected
-    handleArrowChange(index) int
-    handleSelection(selectedIndex) int
+    handleArrowChange(index)
+    handleSelection(selectedIndex)
 }
 
 class Question{
@@ -21,13 +21,13 @@ class Question{
     *string image
     *array choices
     *int preSelected
-    handleSelection(index) int
+    handleSelection(index)
 }
 
 class Arrow{
     *int index
     *int length
-    handleArrowChange(index) int
+    handleArrowChange(index)
 }
 
 ```
