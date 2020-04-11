@@ -15,6 +15,7 @@ class App{
     handleArrowChange(index) int
     handleSelection(selectedIndex) int
 }
+
 class Question{
     *string question
     *string image
@@ -22,9 +23,11 @@ class Question{
     *int preSelected
     -handleSelection(index) int
 }
+
 class Arrow{
     *int index
     *int length
     -handleArrowChange(index) int
 }
+
 ```
