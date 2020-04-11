@@ -67,12 +67,13 @@
 .choice {
   font-family: "Helvetica Neue";
   font-size: 24px;
-  display: inline;
+  display: block;
+  width: 100%;
 }
 input[type=radio] {
-  display: inline;
-  border: 0px;
-  width: 50%;
+  display: inline-block;
+  width:15%;
+  border: 0px auto;
   height: 4em;
 }
 
