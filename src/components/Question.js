@@ -16,7 +16,7 @@ function Question(props) {
             </div>
             <div className='answer'>
                 <div className='image'>
-                    <img src={`${image}`} alt={image} />
+                    <img src={`react_questions/${image}`} alt={image} />
                 </div>
                 <div className='choices'>
                     <form>
